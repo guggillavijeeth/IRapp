@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IR</string>
+    <string name="toggleOff">Alarm Off</string>
+    <string name="ToggleOn">Alarm On</string>
+    <string name="title">Notification Title</string>
+    <string name="content">NotificationContext</string>
 </resources>
