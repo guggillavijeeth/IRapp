@@ -11,6 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ListView
+            android:id="@+id/ListUpcoming"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="2dp">
+        </ListView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
