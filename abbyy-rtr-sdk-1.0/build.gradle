@@ -1,0 +1,6 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('abbyy-rtr-sdk-1.0.aar'))
+
+dependencies {
+    compile(name:'abbyy-rtr-sdk-1.0', ext:'aar')
+}
