@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Button;
 
 import java.text.DateFormat;
@@ -13,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Event extends Object {
+
+    private static final String TAG = "Event";
 
     private String name;
     private String date;

@@ -16,7 +16,8 @@
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="10dp"
-        android:inputType="textMultiLine"
+        android:minLines="1"
+        android:maxLines= "3"
         android:padding="10sp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
@@ -35,6 +36,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:textSize="16sp"
+        android:maxLines= "3"
         app:layout_constraintBottom_toTopOf="@+id/eventTime"
         app:layout_constraintStart_toEndOf="@+id/eventName"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,6 +51,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:textSize="16sp"
+        android:maxLines= "3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eventName"
         app:layout_constraintTop_toBottomOf="@+id/eventDate" />
@@ -68,7 +71,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eventDate"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="blocksDescendants"/>
 
 </android.support.constraint.ConstraintLayout>
 

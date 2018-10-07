@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BetterArrayAdapter extends ArrayAdapter<Event>{
 
+    private static final String TAG = "BetterArrayAdapter";
     private Context myContext;
     private int resource;
     private List<Event> eventsList = new ArrayList<Event>();
@@ -49,10 +52,11 @@ public class BetterArrayAdapter extends ArrayAdapter<Event>{
         time.setText(currentEvent.getTime());
 
         Button button = (Button) listItem.findViewById(R.id.editButton);
-
+        //button.setFocusable(false);
 
         return listItem;
     }
+
 
 
 

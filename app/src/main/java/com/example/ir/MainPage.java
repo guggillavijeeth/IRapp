@@ -36,10 +36,10 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "OnCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        Log.d(TAG, "OnCreate2");
+        Log.d(TAG, "OnCreate");
+
         //listView header design
         TextView textHeader = new TextView(this);
         textHeader.setText(R.string.home_title);
@@ -55,23 +55,18 @@ public class MainPage extends AppCompatActivity {
         displayedEvents.add(new Event("Badminton", "10/07/2018", "7:32AM"));
         displayedEvents.add(new Event("Gardner", "10/07/2018", "5:40AM"));
 
-
         // Set Alarm for event with private field Calender AlarmTime of event
-        //Event e = new Event ("Back to School Harris by SGA", "10/06/2018", "6:21PM");
-        //setAlarm(e.getAlarmTime());
+        for (Event e: displayedEvents){
+            e.setAlarm(this.getApplicationContext());
+        }
 
         eAdapter = new BetterArrayAdapter(this, R.layout.event_text_format, displayedEvents);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent intent = new Intent(MainPage.this, EditPage.class);
-                //intent.putExtra("name", listView.getItemAtPosition(position).toString());
-                //intent.putExtra("date", listView.getItemAtPosition(position).toString());
-
-                //startActivity(intent);
-
                 Log.d(TAG, "OnItemClick: name: "+ displayedEvents.get(position));
-                Toast.makeText(MainPage.this, "You clicked on "+displayedEvents.get(position),Toast.LENGTH_LONG).show();
+                editEvent(displayedEvents.get(position));
 
             }
         });
@@ -79,21 +74,16 @@ public class MainPage extends AppCompatActivity {
         listView.setAdapter(eAdapter);
 
 
-
     }
 
+    private void editEvent (Event e){
+        Intent intent = new Intent (MainPage.this, EditPage.class);
+        intent.putExtra ("originalName", e.getName());
+        intent.putExtra ("originalDate", e.getDate());
+        intent.putExtra ("originalTime", e.getTime());
 
-    public void setAlarm (Calendar calendar){
-        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-        alarm.set(alarm.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+        startActivity(intent);
 
     }
-
-
-
-
 
 }

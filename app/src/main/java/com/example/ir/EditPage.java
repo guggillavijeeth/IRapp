@@ -1,5 +1,6 @@
 package com.example.ir;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,11 +24,13 @@ public class EditPage extends AppCompatActivity {
         name = (EditText) findViewById(R.id.editText3);
         date = (EditText) findViewById(R.id.editText4);
         time = (EditText) findViewById(R.id.editText7);
-/*
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
-            name.setText(bundle.getString("name"));
-        }
-        */
+
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        name.setText(bundle.getString("originalName"));
+
+
     }
 }
