@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class MainPage extends AppCompatActivity {
 
     private ListView listView;
     private BetterArrayAdapter eAdapter;
+    private ArrayList<Event> displayedEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +40,31 @@ public class MainPage extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.ListUpcoming);
         listView.addHeaderView(textHeader);
 
-        ArrayList<Event> displayedEvents = new ArrayList<Event>();
+        displayedEvents = new ArrayList<Event>();
 
         displayedEvents.add(new Event("Back to School Harris by SGA", "10/06/2018", "10:00PM"));
         displayedEvents.add(new Event("Badminton", "10/13/2018", "7:00PM"));
         displayedEvents.add(new Event("Gardner", "11/02/2018", "11:00PM"));
 
+        for (Event e: displayedEvents){
+            e.setAlarm(this.getApplicationContext());
+        }
+
         eAdapter = new BetterArrayAdapter(this, R.layout.event_text_format, displayedEvents);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Event currentEvent = displayedEvents.get(i);
+                Intent intent = new Intent (view.getContext(), EditPage.class);
+                intent.putExtra("originalName",currentEvent.getName());
+                intent.putExtra("originalDate",currentEvent.getDate());
+                intent.putExtra("originalTime",currentEvent.getTime());
+
+                startActivity(intent);
+            }
+        });
+
         listView.setAdapter(eAdapter);
     }
 

@@ -29,7 +29,8 @@
             android:divider="@color/colorPrimaryDark"
             android:dividerHeight="2dp"
             android:headerDividersEnabled="true"
-            android:scrollbars="vertical">
+            android:scrollbars="vertical"
+            android:focusable="false">
         </ListView>
 
     </LinearLayout>
