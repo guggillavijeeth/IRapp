@@ -30,6 +30,8 @@ public class EditPage extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
 
         name.setText(bundle.getString("originalName"));
+        date.setText(bundle.getString("originalDate"));
+        time.setText(bundle.getString("originalTime"));
 
 
     }

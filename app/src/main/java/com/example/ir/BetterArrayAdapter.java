@@ -51,9 +51,6 @@ public class BetterArrayAdapter extends ArrayAdapter<Event>{
         TextView time = (TextView) listItem.findViewById(R.id.eventTime);
         time.setText(currentEvent.getTime());
 
-        Button button = (Button) listItem.findViewById(R.id.editButton);
-        //button.setFocusable(false);
-
         return listItem;
     }
 

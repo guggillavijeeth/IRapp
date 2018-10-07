@@ -64,26 +64,22 @@ public class MainPage extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, "OnItemClick: name: "+ displayedEvents.get(position));
-                editEvent(displayedEvents.get(position));
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Event currentEvent = displayedEvents.get(i);
+                Intent intent = new Intent (view.getContext(), EditPage.class);
+                intent.putExtra("originalName",currentEvent.getName());
+                intent.putExtra("originalDate",currentEvent.getDate());
+                intent.putExtra("originalTime",currentEvent.getTime());
 
+                startActivity(intent);
             }
         });
 
         listView.setAdapter(eAdapter);
 
 
-    }
-
-    private void editEvent (Event e){
-        Intent intent = new Intent (MainPage.this, EditPage.class);
-        intent.putExtra ("originalName", e.getName());
-        intent.putExtra ("originalDate", e.getDate());
-        intent.putExtra ("originalTime", e.getTime());
-
-        startActivity(intent);
 
     }
+
 
 }
