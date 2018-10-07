@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 
 /**
@@ -16,21 +17,20 @@ import android.support.v4.app.NotificationCompat;
 public class AlarmReceiver extends BroadcastReceiver {
 
     private NotificationManager notificationManager;
+    private static final int NOTIFICATION_ID = 0;
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Toast.makeText(context, "Alarm has been received test", Toast.LENGTH_LONG).show();
 
         notificationManager =
-                (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        //TODO: change the content to Event.id()
-
-        int notificationID = 0;
+                (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
 
         //TODO: check if it received in right time
         //https://stackoverflow.com/questions/34583280/set-notification-for-specific-date-and-time
-        sendNotification(notificationID, context);
+        sendNotification(context);
 
-
+        Toast.makeText(context, "Notification sent", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -39,11 +39,11 @@ public class AlarmReceiver extends BroadcastReceiver {
      * @param context
      *
      */
-    private void sendNotification (int id, Context context){
+    private void sendNotification (Context context){
 
         Intent contentIntent = new Intent(context, MainPage.class);
         PendingIntent contentPendingIntent = PendingIntent.getActivity
-                (context, id, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                (context, NOTIFICATION_ID, contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //TODO: change the content title and text
         NotificationCompat.Builder builder =  new NotificationCompat.Builder(context, "notification")
@@ -55,6 +55,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL);
 
-        notificationManager.notify(id, builder.build());
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 }
