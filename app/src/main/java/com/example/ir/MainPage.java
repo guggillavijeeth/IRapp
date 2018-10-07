@@ -80,22 +80,39 @@ public class MainPage extends AppCompatActivity {
             case R.id.action_camera:
                 //User chose camera option, open camera activity
                 Intent openCam = new Intent(this, MainActivity.class);
-                startActivity(openCam);
+                startActivityForResult(openCam, 1);
                 return true;
             case R.id.action_add:
                 //User chose to add manually, open event add
                 Intent addEvent = new Intent(this, AddPage.class);
-                startActivity(addEvent);
+                startActivityForResult(addEvent, 2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void sendMessage(View view){
-        
-        //Intent intent = new Intent(this, EditPage.class);
-        //TextView nameView = (TextView) findViewById(R.id.eventName)
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+
+        if(requestCode == 2){
+
+            Bundle b = intent.getExtras();
+
+            displayedEvents.add(new Event(b.get(AddPage.NAME_KEY).toString(), b.get(AddPage.DATE_KEY).toString(), b.get(AddPage.TIME_KEY).toString()));
+            eAdapter = new BetterArrayAdapter(this, R.layout.event_text_format, displayedEvents);
+            listView.setAdapter(eAdapter);
+        }
+        super.onActivityResult(requestCode, resultCode, intent);
+    }
+
+    public void onReceive(View view){
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        Event e = new Event((bundle.getString("originalName"))
+                ,(bundle.getString("originalDate"))
+                , (bundle.getString("originalTime")));
+
+        e.setAlarm(this);
     }
 
 }

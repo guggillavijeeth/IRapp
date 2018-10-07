@@ -22,7 +22,7 @@ public class AddPage extends AppCompatActivity {
 
     /** Called when the user taps the DONE button */
     public void sendEntry(View view) {
-        Intent intent = new Intent(this, MainPage.class);
+        Intent intent = getIntent();
 
         EditText nameText = (EditText) findViewById(R.id.addText3);
         EditText dateText = (EditText) findViewById(R.id.addText4);
@@ -36,7 +36,8 @@ public class AddPage extends AppCompatActivity {
         intent.putExtra(DATE_KEY, newDate);
         intent.putExtra(TIME_KEY, newTime);
 
-        startActivity(intent);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
 
