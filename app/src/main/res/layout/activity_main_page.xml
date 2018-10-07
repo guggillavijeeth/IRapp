@@ -15,26 +15,12 @@
             android:id="@+id/ListUpcoming"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@color/colorPrimary"
-            android:dividerHeight="2dp">
-        </ListView>
+            android:background="@color/colorAccent"
+            android:divider="@color/colorPrimaryDark"
+            android:dividerHeight="2dp"
+            android:headerDividersEnabled="true"
+            android:scrollbars="vertical"></ListView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Upcoming Events"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.057"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.032" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

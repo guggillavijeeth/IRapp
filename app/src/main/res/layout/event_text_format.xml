@@ -9,47 +9,64 @@
 
     <TextView
         android:id="@+id/eventName"
+        android:gravity="center"
         android:layout_width="178dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:inputType="textMultiLine"
         android:padding="10sp"
-        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:fontFamily="@font/actor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/eventDate"
+        android:gravity="center"
         android:layout_width="100dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toEndOf="@+id/eventName"
-        tools:layout_editor_absoluteY="16dp"/>
-
-    <TextView
-        android:id="@+id/eventTime"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/eventTime"
+        app:layout_constraintStart_toEndOf="@+id/eventName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/eventTime"
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eventName"
         app:layout_constraintTop_toBottomOf="@+id/eventDate" />
 
     <Button
         android:id="@+id/button"
-        android:background="@color/colorEditButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="18dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="18dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
         android:drawableTop="@drawable/ic_blue_edit_70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/eventDate"
         app:layout_constraintTop_toTopOf="parent" />
