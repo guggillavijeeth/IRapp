@@ -6,7 +6,8 @@ buildscript {
         google()
         jcenter()
         flatDir {
-            dirs 'C:\\Users\\vijee\\AndroidStudioProjects\\IR\\abbyy-rtr-sdk-1.0\\abbyy-rtr-sdk-1.0.aar'
+            //dirs 'C:\\Users\\vijee\\AndroidStudioProjects\\IR\\abbyy-rtr-sdk-1.0\\abbyy-rtr-sdk-1.0.aar'
+            dirs '../../libs'
         }
     }
     dependencies {

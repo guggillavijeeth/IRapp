@@ -1,9 +1,11 @@
 package com.example.ir;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,6 +40,12 @@ public class MainPage extends AppCompatActivity {
 
         eAdapter = new BetterArrayAdapter(this, R.layout.event_text_format, displayedEvents);
         listView.setAdapter(eAdapter);
+    }
+
+    public void sendMessage(View view){
+        
+        //Intent intent = new Intent(this, EditPage.class);
+        //TextView nameView = (TextView) findViewById(R.id.eventName)
     }
 
 }
