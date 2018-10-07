@@ -5,6 +5,9 @@ import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,6 +26,9 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         //listView header design
         TextView textHeader = new TextView(this);
         textHeader.setText(R.string.home_title);
@@ -40,6 +46,30 @@ public class MainPage extends AppCompatActivity {
 
         eAdapter = new BetterArrayAdapter(this, R.layout.event_text_format, displayedEvents);
         listView.setAdapter(eAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.action_bar_buttons, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_camera:
+                //User chose camera option, open camera activity
+                Intent openCam = new Intent(this, MainActivity.class);
+                startActivity(openCam);
+                return true;
+            case R.id.action_add:
+                //User chose to add manually, open event add
+                Intent addEvent = new Intent(this, AddPage.class);
+                startActivity(addEvent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void sendMessage(View view){
